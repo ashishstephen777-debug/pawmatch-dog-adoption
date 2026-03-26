@@ -1,0 +1,51 @@
+{
+  "row_type": "user_dog_pair",
+  "columns": {
+    "categorical": [
+      "housing_type",
+      "yard_size_bucket",
+      "activity_level",
+      "pet_experience",
+      "allergies_level",
+      "preferred_size",
+      "preferred_age",
+      "preferred_temperament",
+      "breed",
+      "dog_size",
+      "dog_age_bucket",
+      "energy_level",
+      "temperament",
+      "training_level",
+      "kid_compatibility",
+      "other_pets_compatibility"
+    ],
+    "numeric": [
+      "work_hours_away",
+      "budget_monthly",
+      "kids_in_household",
+      "other_pets_in_household",
+      "allergies_severe_flag",
+      "special_needs",
+      "hypoallergenic",
+      "dog_age_years",
+      "size_match",
+      "age_proximity",
+      "temperament_match",
+      "energy_compat",
+      "allergies_compat",
+      "training_compat",
+      "kids_compat",
+      "other_pets_compat",
+      "dog_cost_estimate",
+      "budget_compat",
+      "unrealistic_preferences_flag",
+      "schedule_mismatch_flag",
+      "yard_ok_flag"
+    ],
+    "labels": {
+      "compatible": "1 if low return risk / likely long-term adoption",
+      "risk_returned": "1 if adopter returned the dog"
+    }
+  }
+}
+
