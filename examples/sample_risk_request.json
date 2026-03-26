@@ -1,0 +1,33 @@
+{
+  "user": {
+    "housing_type": "house",
+    "yard_size_bucket": "large",
+    "activity_level": "high",
+    "work_hours_away": 3,
+    "pet_experience": "none",
+    "allergies": "none",
+    "preferred_traits": {
+      "size": "medium",
+      "age": "young_adult",
+      "temperament": "energetic"
+    },
+    "budget_monthly": 300,
+    "kids_in_household": 1,
+    "other_pets_in_household": 0,
+    "fairness_group": "low"
+  },
+  "dog": {
+    "breed": "German Shepherd",
+    "age_years": 3.0,
+    "size": "medium",
+    "energy_level": "high",
+    "temperament": "energetic",
+    "training_level": "high",
+    "special_needs": false,
+    "hypoallergenic": false,
+    "kid_compatibility": "medium",
+    "other_pets_compatibility": "high",
+    "shelter_notes": "Learning basic commands."
+  }
+}
+
