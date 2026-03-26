@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch &mdash; Find Your Perfect Dog</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="brand-icon">🐾</span>
+        <span class="brand-name">PawMatch</span>
+      </div>
+      <nav class="nav-tabs">
+        <button class="tab-btn active" data-page="home">Home</button>
+        <button class="tab-btn" data-page="match">Match Dogs</button>
+        <button class="tab-btn" data-page="risk">Adoption Risk</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- ======== HOME ======== -->
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <div class="hero-badge">AI-Powered Matching</div>
+        <h1 class="hero-title">Find Your<br><span class="accent">Perfect Companion</span></h1>
+        <p class="hero-subtitle">
+          Answer a few questions about your lifestyle and preferences. Our model analyzes compatibility across energy, temperament, allergies, budget, and more — then ranks the best dogs for you.
+        </p>
+        <button class="btn-primary btn-lg" onclick="goToPage('match')">
+          Start Matching &rarr;
+        </button>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏠</div>
+          <h3>Lifestyle Fit</h3>
+          <p>We consider your housing, yard, activity level, and work schedule to find dogs that truly fit your life.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧬</div>
+          <h3>Smart Compatibility</h3>
+          <p>Our ML model scores every dog in our catalog against your profile across 20+ compatibility signals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">❤️</div>
+          <h3>Risk Assessment</h3>
+          <p>Before adopting, check your adoption risk score so you can prepare for a successful, lasting match.</p>
+        </div>
+      </div>
+
+      <div class="dog-preview-section">
+        <h2 class="section-title">Dogs Available for Adoption</h2>
+        <div class="dog-preview-grid" id="dog-preview-grid"></div>
+      </div>
+    </section>
+
+    <!-- ======== MATCH DOGS ======== -->
+    <section id="page-match" class="page">
+      <div class="page-header">
+        <h1>Find Your Match</h1>
+        <p>Tell us about yourself and we'll rank the best dogs from our shelter catalog for you.</p>
+      </div>
+
+      <div class="match-layout">
+        <div class="form-card">
+          <form id="match-form">
+            <div class="form-section-title">Living Situation</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Home Type</label>
+                <select name="housing_type">
+                  <option value="apartment">Apartment</option>
+                  <option value="house" selected>House</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Yard / Outdoor Space</label>
+                <select name="yard_size_bucket">
+                  <option value="none">No yard</option>
+                  <option value="small">Small yard</option>
+                  <option value="medium" selected>Medium yard</option>
+                  <option value="large">Large yard</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section-title">Lifestyle</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Activity Level</label>
+                <select name="activity_level">
+                  <option value="low">Low &mdash; Homebody</option>
+                  <option value="medium" selected>Medium &mdash; Occasional walks</option>
+                  <option value="high">High &mdash; Very active</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Hours Away from Home / Day</label>
+                <select name="work_hours_away">
+                  <option value="1">1 hour</option>
+                  <option value="2">2 hours</option>
+                  <option value="4" selected>4 hours</option>
+                  <option value="6">6 hours</option>
+                  <option value="8">8 hours</option>
+                  <option value="10">10+ hours</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Dog Experience</label>
+                <select name="pet_experience">
+                  <option value="none">None &mdash; First-time owner</option>
+                  <option value="some" selected>Some &mdash; Had dogs before</option>
+                  <option value="expert">Expert &mdash; Very experienced</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Monthly Budget (USD)</label>
+                <select name="budget_monthly">
+                  <option value="100">$100</option>
+                  <option value="150">$150</option>
+                  <option value="200">$200</option>
+                  <option value="250" selected>$250</option>
+                  <option value="350">$350</option>
+                  <option value="500">$500+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section-title">Household</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Children at Home?</label>
+                <select name="kids_in_household">
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Other Pets at Home?</label>
+                <select name="other_pets_in_household">
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Allergies</label>
+                <select name="allergies">
+                  <option value="none" selected>None</option>
+                  <option value="mild">Mild</option>
+                  <option value="severe">Severe</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section-title">Preferences</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Preferred Size</label>
+                <select name="preferred_size">
+                  <option value="small">Small</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Preferred Age</label>
+                <select name="preferred_age">
+                  <option value="puppy">Puppy</option>
+                  <option value="young_adult">Young Adult</option>
+                  <option value="adult" selected>Adult</option>
+                  <option value="senior">Senior</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Preferred Temperament</label>
+                <select name="preferred_temperament">
+                  <option value="friendly" selected>Friendly</option>
+                  <option value="calm">Calm</option>
+                  <option value="energetic">Energetic</option>
+                  <option value="shy">Shy / Gentle</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Preferred Energy Level</label>
+                <select name="preferred_energy">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary btn-block" id="match-btn">
+              Find My Matches
+            </button>
+          </form>
+        </div>
+
+        <div class="results-panel" id="match-results">
+          <div class="results-placeholder">
+            <div class="placeholder-icon">🐕</div>
+            <p>Fill in your details and hit <strong>Find My Matches</strong> to see your top dog matches.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ADOPTION RISK ======== -->
+    <section id="page-risk" class="page">
+      <div class="page-header">
+        <h1>Adoption Risk Check</h1>
+        <p>Enter your profile and a specific dog to get a personalized risk assessment before adopting.</p>
+      </div>
+
+      <div class="risk-layout">
+        <div class="risk-forms">
+          <div class="form-card">
+            <div class="form-card-title">Your Profile</div>
+            <form id="risk-user-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Home Type</label>
+                  <select name="housing_type">
+                    <option value="apartment">Apartment</option>
+                    <option value="house" selected>House</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Yard Size</label>
+                  <select name="yard_size_bucket">
+                    <option value="none">No yard</option>
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Activity Level</label>
+                  <select name="activity_level">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Hours Away / Day</label>
+                  <select name="work_hours_away">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4" selected>4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10+</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Dog Experience</label>
+                  <select name="pet_experience">
+                    <option value="none">None</option>
+                    <option value="some" selected>Some</option>
+                    <option value="expert">Expert</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Monthly Budget</label>
+                  <select name="budget_monthly">
+                    <option value="100">$100</option>
+                    <option value="200">$200</option>
+                    <option value="250" selected>$250</option>
+                    <option value="350">$350</option>
+                    <option value="500">$500+</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Children at Home?</label>
+                  <select name="kids_in_household">
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Other Pets?</label>
+                  <select name="other_pets_in_household">
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Allergies</label>
+                  <select name="allergies">
+                    <option value="none" selected>None</option>
+                    <option value="mild">Mild</option>
+                    <option value="severe">Severe</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-card">
+            <div class="form-card-title">Choose a Dog</div>
+            <div class="dog-picker" id="risk-dog-picker"></div>
+          </div>
+        </div>
+
+        <div class="risk-result-panel">
+          <button class="btn-primary btn-block" id="risk-btn" onclick="runRiskCheck()">
+            Check Adoption Risk
+          </button>
+          <div id="risk-result" class="risk-result-placeholder">
+            <div class="placeholder-icon">🔍</div>
+            <p>Select a dog and hit <strong>Check Adoption Risk</strong> to see your assessment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
