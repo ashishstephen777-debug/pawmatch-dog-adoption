@@ -1,0 +1,49 @@
+{
+  "user": {
+    "housing_type": "apartment",
+    "yard_size_bucket": "none",
+    "activity_level": "low",
+    "work_hours_away": 6,
+    "pet_experience": "some",
+    "allergies": "mild",
+    "preferred_traits": {
+      "size": "small",
+      "age": "adult",
+      "temperament": "calm"
+    },
+    "budget_monthly": 200,
+    "kids_in_household": 0,
+    "other_pets_in_household": 1,
+    "fairness_group": "mid"
+  },
+  "candidate_dogs": [
+    {
+      "breed": "Poodle",
+      "age_years": 4.2,
+      "size": "small",
+      "energy_level": "low",
+      "temperament": "calm",
+      "training_level": "medium",
+      "special_needs": false,
+      "hypoallergenic": true,
+      "kid_compatibility": "medium",
+      "other_pets_compatibility": "high",
+      "shelter_notes": "Learning basic commands."
+    },
+    {
+      "breed": "Husky",
+      "age_years": 2.0,
+      "size": "medium",
+      "energy_level": "high",
+      "temperament": "energetic",
+      "training_level": "low",
+      "special_needs": true,
+      "hypoallergenic": false,
+      "kid_compatibility": "low",
+      "other_pets_compatibility": "low",
+      "shelter_notes": "Has medical considerations."
+    }
+  ],
+  "top_k": 5
+}
+
